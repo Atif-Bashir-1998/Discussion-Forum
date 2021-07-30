@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\discussionController;
+use App\Http\Controllers\DiscussionController;
+use App\Http\Controllers\SiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,6 @@ use App\Http\Controllers\discussionController;
 //     return view('welcome');
 // });
 
-Route::get('/',[discussionController::class,'index']);
-Route::get('/login',[discussionController::class,'login']);
-Route::post('/confirm',[discussionController::class,'confirm']);
+Route::get('/',[SiteController::class,'index']);
+Route::get('/login',[SiteController::class,'login']);
+Route::post('/login',[SiteController::class,'confirm_login']);
