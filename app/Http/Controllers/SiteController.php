@@ -19,7 +19,6 @@ class SiteController extends Controller
         $validatedData = $request->validate([
             'email' => 'required',
             'password' => 'required',
-            
         ]);
         $email = $request->input('email');
         $password =$request->input('password');
@@ -28,21 +27,26 @@ class SiteController extends Controller
             'password' =>$password
         ])->first();
 
-        // return dd($user);
+        // return dd($request);
 
         if ($user){
-            return view('pages.index');
+            $message = "You have successfully logged in";
+            $request->session()->put(
+                'username', $user->name
+            );
+            return redirect('/')->with('success', $message);
         }
         else{
-             $message = "This user does not exist";
-            return view('pages.login',compact('message'));
+            $message = "This user does not exist";
+            return back()->with('error', $message);
+            // return view('pages.login',compact('message'));
         }
 
     }
 
     public function register(){
         return view('pages.register');
-     }
+    }
 
      public function register_confirm(Request $request){
         $validatedData = $request->validate([

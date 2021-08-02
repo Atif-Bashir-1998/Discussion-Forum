@@ -8,24 +8,45 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	</head>
 <body>
-  @include('layouts.flash_messages')
-    <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="/login">Login</a>
-            <a class="nav-item nav-link" href="/register">Register</a>
-          </div>
-        </div>
-      </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Discussion Forum</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="#">Home</a>
+				</li>
+				@if (session('username'))
+					<li class="nav-item">
+						<a class="nav-link" href="/login">New Discussion</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/register">Dashboard</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/register">{{ session('username') }}</a>
+					</li>
+				@else
+					<li class="nav-item">
+						<a class="nav-link" href="/login">Login</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/register">Register</a>
+					</li>
+				@endif
+			</ul>
+		</div>
+	</nav>
 
-    </div>
+	@include('layouts.flash')
+
+	@yield('content')
 </body>
 </html>
-
-@yield('content')
