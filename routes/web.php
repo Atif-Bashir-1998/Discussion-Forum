@@ -22,3 +22,5 @@ use App\Http\Controllers\SiteController;
 Route::get('/',[SiteController::class,'index']);
 Route::get('/login',[SiteController::class,'login']);
 Route::post('/login',[SiteController::class,'confirm_login']);
+Route::get('/register',[SiteController::class,'register']);
+Route::post('/register',[SiteController::class,'register_confirm']);

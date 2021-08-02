@@ -2,6 +2,6 @@
 
 @section('content')
 
-<h1>All posts will be here</h1>
+<h1>{{__('profile.welcome')}}</h1>
     
 @endsection
