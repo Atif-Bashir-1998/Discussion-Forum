@@ -14,31 +14,31 @@
 	</head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Discussion Forum</a>
+		<a class="navbar-brand" href="#">{{__('profile.Discussion Forum')}}</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="#">Home</a>
+					<a class="nav-link" href="/">{{__('profile.Home')}}</a>
 				</li>
 				@if (session('username'))
 					<li class="nav-item">
-						<a class="nav-link" href="/login">New Discussion</a>
+						<a class="nav-link" href="/login">{{__('profile.New Discussion')}}</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/register">Dashboard</a>
+						<a class="nav-link" href="/register">{{__('profile.Dashboard')}}</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/register">{{ session('username') }}</a>
 					</li>
 				@else
 					<li class="nav-item">
-						<a class="nav-link" href="/login">Login</a>
+						<a class="nav-link" href="/login">{{__('profile.Login')}}</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/register">Register</a>
+						<a class="nav-link" href="/register">{{__('profile.Register')}}</a>
 					</li>
 				@endif
 			</ul>
