@@ -20,7 +20,19 @@ use App\Http\Controllers\SiteController;
 // });
 
 Route::get('/',[SiteController::class,'index']);
-Route::get('/login',[SiteController::class,'login']);
+Route::get('/login',[SiteController::class,'login'])->middleware('protectedpage');
 Route::post('/login',[SiteController::class,'confirm_login']);
-Route::get('/register',[SiteController::class,'register']);
+Route::get('/register',[SiteController::class,'register'])->middleware('protectedpage');
 Route::post('/register',[SiteController::class,'register_confirm']);
+Route::get('/newdiscussion',[SiteController::class,'newdiscussion']);
+Route::get('/dashboard',[SiteController::class,'dashboard']);
+
+
+
+ Route::get('/logout', function () {
+   if(session()->has('username')){
+       session()->pull('username');
+   }
+
+   return redirect ('/login');
+ });

@@ -14,19 +14,19 @@ class CreateDiscussionsTable extends Migration
     public function up()
     {
         Schema::create('discussions', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('post_title');
-            $table->string('user_id')->usingned();
+            $table->unsignedInteger('user_id');
             $table->string('written by');
             $table->longtext('description');
             $table->longtext('brief');
+            $table->timestamps();
+
             $table->foreign('user_id')
-                    ->reference('id')
+                    ->references('id')
                     ->on('users')
                     ->onDelete('cascade');
-        
-          
-            $table->timestamps();
+            
         });
     }
 

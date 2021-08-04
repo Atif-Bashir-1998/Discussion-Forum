@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Discussion;
 use Illuminate\Support\Facades\DB;
 
 class SiteController extends Controller
 {
     public function index(){
-        return view('pages.index');
+        // show all posts by a user
+        // $user = User::where('id', 1)->first();
+        // return dd($user->discussions);
+
+        $discussion = Discussion::where('id', 1)->first();
+
+        return view('pages.index', compact('discussion'));
     }
 
     public function login(){
@@ -79,4 +86,10 @@ class SiteController extends Controller
 
        
      }
+     public function newdiscussion(){
+         return view('pages.newdiscussion');
+     }
+     public function dashboard(){
+        return view('pages.dashboard');
+    }
 }
