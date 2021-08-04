@@ -26,13 +26,4 @@ Route::get('/register',[SiteController::class,'register'])->middleware('protecte
 Route::post('/register',[SiteController::class,'register_confirm']);
 Route::get('/newdiscussion',[SiteController::class,'newdiscussion']);
 Route::get('/dashboard',[SiteController::class,'dashboard']);
-
-
-
- Route::get('/logout', function () {
-   if(session()->has('username')){
-       session()->pull('username');
-   }
-
-   return redirect ('/login');
- });
+Route::get('/logout', [SiteController::class, 'logout']);

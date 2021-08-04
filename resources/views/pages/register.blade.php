@@ -10,8 +10,8 @@
             <div class="form-group">
                 @csrf
                 <label for="exampleInputPassword1">{{__('profile.Username')}}</label>
-                <input type="text" class="form-control" name="username" value="{{ old('username') }}">
-                <span class="text-danger">@error('username'){{ $message }} @enderror</span>
+                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                <span class="text-danger">@error('name'){{ $message }} @enderror</span>
 
             </div>
             <div class="form-group">

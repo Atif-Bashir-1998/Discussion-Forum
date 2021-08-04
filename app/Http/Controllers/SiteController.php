@@ -39,12 +39,12 @@ class SiteController extends Controller
         if ($user){
             $message = "You have successfully logged in";
             $request->session()->put(
-                'username', $user->name
+                'name', $user->name
             );
             return redirect('/')->with('success', $message);
         }
         else{
-            $message = "This user does not exist";
+            $message = "Invalid credentials";
             return back()->with('error', $message);
             // return view('pages.login',compact('message'));
         }
@@ -55,41 +55,44 @@ class SiteController extends Controller
         return view('pages.register');
     }
 
-     public function register_confirm(Request $request){
-        $validatedData = $request->validate([
-            'username' => 'required',
-            'email' => 'required',
+    public function register_confirm(Request $request){
+        $validated_data = $request->validate([
+            'name' => 'required|unique:users',
+            'email' => 'required|unique:users',
             'password' => 'required',
             'confirm_password' => 'required',
-            'country' => 'required'   
-            
+            'country' => 'required'
         ]);
+
         $password = $request->input('password');
         $confirm_password= $request->input('confirm_password');
         if ($password != $confirm_password){
-            $message = "confirm password doesnot match";
-        
-            return view('pages.register',compact('message'));
+            $message = "Passwords do no match";
+            return back()->with('error', $message);
         }
 
-         else {
-             $user = new User;
-            $user->name =$request->input('username');
-            $user->email =$request->input('email');
-            $user->country =$request->input('country');
-            $user->password =$request->input('password');
-            $user->save();
-           
-            return redirect('/');
-         }  
-        
+        $user = new User;
+        $user->name =$request->input('username');
+        $user->email =$request->input('email');
+        $user->country =$request->input('country');
+        $user->password =$request->input('password');
+        $user->save();
 
-       
-     }
-     public function newdiscussion(){
+        $message = "You have successfully registered yourself";
+        
+        return redirect('/login')->with('success', $message); 
+
+    }
+    public function new_discussion(){
          return view('pages.newdiscussion');
-     }
-     public function dashboard(){
+    }
+    public function dashboard(){
         return view('pages.dashboard');
+    }
+
+    public function logout() {
+        session()->flush();
+        $message = "Logged Out";
+        return redirect('/login')->with('success', $message);
     }
 }

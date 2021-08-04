@@ -23,7 +23,7 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/">{{__('profile.Home')}}</a>
 				</li>
-				@if (session('username'))
+				@if (session('name'))
 					<li class="nav-item">
 						<a class="nav-link" href="/newdiscussion">{{__('profile.New Discussion')}}</a>
 					</li>
@@ -31,7 +31,7 @@
 						<a class="nav-link" href="/dashboard">{{__('profile.Dashboard')}}</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/register">{{ session('username') }}</a>
+						<a class="nav-link" href="/register">{{ session('name') }}</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/logout">Logout</a>
