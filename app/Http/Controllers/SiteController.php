@@ -13,10 +13,11 @@ class SiteController extends Controller
         // show all posts by a user
         // $user = User::where('id', 1)->first();
         // return dd($user->discussions);
+    
 
-        $discussion = Discussion::where('id', 1)->first();
+        $discussions = Discussion::orderBy('created_at','desc')->get();
 
-        return view('pages.index', compact('discussion'));
+        return view('pages.index', compact('discussions'));
     }
 
     public function login(){
@@ -39,7 +40,11 @@ class SiteController extends Controller
         if ($user){
             $message = "You have successfully logged in";
             $request->session()->put(
-                'name', $user->name
+                [
+                    'name'=> $user->name,
+                    'id'=> $user->id,
+                   
+                ]
             );
             return redirect('/')->with('success', $message);
         }
@@ -72,7 +77,7 @@ class SiteController extends Controller
         }
 
         $user = new User;
-        $user->name =$request->input('username');
+        $user->name =$request->input('name');
         $user->email =$request->input('email');
         $user->country =$request->input('country');
         $user->password =$request->input('password');
@@ -83,13 +88,6 @@ class SiteController extends Controller
         return redirect('/login')->with('success', $message); 
 
     }
-    public function new_discussion(){
-         return view('pages.newdiscussion');
-    }
-    public function dashboard(){
-        return view('pages.dashboard');
-    }
-
     public function logout() {
         session()->flush();
         $message = "Logged Out";

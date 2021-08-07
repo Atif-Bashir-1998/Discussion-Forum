@@ -14,7 +14,7 @@
 	</head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="/">{{__('profile.Discussion Forum')}}</a>
+		<a class="navbar-brand" href="/">{{__('profile.Discussion Forum')}}</a> 
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -25,7 +25,7 @@
 				</li>
 				@if (session('name'))
 					<li class="nav-item">
-						<a class="nav-link" href="/newdiscussion">{{__('profile.New Discussion')}}</a>
+						<a class="nav-link" href="/new_discussion">{{__('profile.New Discussion')}}</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/dashboard">{{__('profile.Dashboard')}}</a>
@@ -44,6 +44,15 @@
 						<a class="nav-link" href="/register">{{__('profile.Register')}}</a>
 					</li>
 				@endif
+				<div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					 Select Language
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					  <a class="dropdown-item" href="/lang/en">English</a>
+					  <a class="dropdown-item" href="/lang/de">German</a>
+					</div>
+				  </div>
 			</ul>
 		</div>
 	</nav>

@@ -13,6 +13,8 @@ class User extends Authenticatable
 
     protected $table = 'users';
 
+    
+
     public function discussions(){
         return $this->hasMany(Discussion::class);
     }

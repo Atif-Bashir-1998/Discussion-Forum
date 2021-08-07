@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DiscussionController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\LocalizationController;
+use App\Http\Middleware\Localization;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,18 @@ Route::get('/login',[SiteController::class,'login'])->middleware('protectedpage'
 Route::post('/login',[SiteController::class,'confirm_login']);
 Route::get('/register',[SiteController::class,'register'])->middleware('protectedpage');
 Route::post('/register',[SiteController::class,'register_confirm']);
-Route::get('/newdiscussion',[SiteController::class,'newdiscussion']);
-Route::get('/dashboard',[SiteController::class,'dashboard']);
 Route::get('/logout', [SiteController::class, 'logout']);
+
+Route::post('/new_discussion',[DiscussionController::class,'confirm_new_discussion']);
+Route::get('/new_discussion',[DiscussionController::class,'new_discussion']);
+Route::get('/dashboard',[DiscussionController::class,'dashboard']);
+Route::get('/detail/{id}',[DiscussionController::class,'detail'])->where('id','^\d+$');
+
+Route::get('/{lang?}',function ($lang ='en'){
+    return view('/');
+});
+
+Route::get('lang/{language}',[LocalizationController::class,'index']);
+
+
+

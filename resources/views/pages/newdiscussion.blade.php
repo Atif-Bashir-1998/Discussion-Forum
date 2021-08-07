@@ -8,24 +8,30 @@
 <h2>here you will create new discussions</h2>
 
 
-{{-- Discussion template  --}}
+ {{-- Discussion template   --}}
     
-{{-- <form action="/login" method="POST">
+ <form action="/new_discussion" method="POST">
     <div class="form-group">
         @csrf
-      <label for="exampleInputEmail1">{{__('profile.Email address')}}</label>
-      <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+      <label for="exampleInputEmail1">Title</label>
+      <input type="text" class="form-control" name="title" >
       <span class="text-danger">@error('email'){{ $message }} @enderror</span>
 
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">{{__('profile.Password')}}</label>
-      <input type="password" class="form-control" name="password" placeholder="Password">
+      <label for="exampleInputPassword1">Description</label>
+      <input type="text" class="form-control" name="description">
+      <span class="text-danger">@error('password'){{ $message }} @enderror</span>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Brief</label>
+      <input type="text" class="form-control" name="brief">
       <span class="text-danger">@error('password'){{ $message }} @enderror</span>
     </div>
    
     <button type="submit" class="btn btn-primary">{{__('profile.Submit')}}</button>
   </form>
 
-</div> --}}
+</div> 
 @endsection
