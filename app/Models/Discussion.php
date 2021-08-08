@@ -11,6 +11,10 @@ class Discussion extends Model
 
     protected $table = "discussions";
 
+    protected $fillable = ['title', 'description', 'brief'];
+
+    
+
     public function user(){
         return $this->belongsTo(User::class);
     }

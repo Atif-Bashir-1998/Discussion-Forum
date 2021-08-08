@@ -17,7 +17,6 @@ class CreateDiscussionsTable extends Migration
             $table->increments('id');
             $table->string('post_title');
             $table->unsignedInteger('user_id');
-            $table->string('written by');
             $table->longtext('description');
             $table->longtext('brief');
             $table->timestamps();

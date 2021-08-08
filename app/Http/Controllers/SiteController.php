@@ -15,7 +15,7 @@ class SiteController extends Controller
         // return dd($user->discussions);
     
 
-        $discussions = Discussion::orderBy('created_at','desc')->get();
+        $discussions = Discussion::orderBy('created_at','desc')->paginate(20);
 
         return view('pages.index', compact('discussions'));
     }

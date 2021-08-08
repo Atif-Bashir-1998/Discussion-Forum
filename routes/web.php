@@ -32,6 +32,10 @@ Route::post('/new_discussion',[DiscussionController::class,'confirm_new_discussi
 Route::get('/new_discussion',[DiscussionController::class,'new_discussion']);
 Route::get('/dashboard',[DiscussionController::class,'dashboard']);
 Route::get('/detail/{id}',[DiscussionController::class,'detail'])->where('id','^\d+$');
+Route::get('/delete/{id}',[DiscussionController::class,'delete'])->where('id','^\d+$');
+Route::get('/edit/{id}',[DiscussionController::class,'edit_post'])->where('id','^\d+$');
+Route::post('/update_post',[DiscussionController::class,'update_post']);
+
 
 Route::get('/{lang?}',function ($lang ='en'){
     return view('/');

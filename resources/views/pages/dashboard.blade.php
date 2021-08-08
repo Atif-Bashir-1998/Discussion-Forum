@@ -16,26 +16,17 @@
 
 
     @forelse ($discussions as $discussion)
-    <button type="button" class="btn btn-primary">Delete</button>
+   
     <p>{{ $discussion->post_title }}</p> 
     <p>{{ $discussion->description }}</p> 
     <p>{{ $discussion->description }}</p>
+    <a href="/delete/{{$discussion->id}}">Delete</a> <br>
+    <a href="/edit/{{$discussion->id}}">Edit</a>
 
     <hr>
     @empty
     <p>No posts for this user</p>
     @endforelse
-        
 
-     {{-- @forelse ($discussion->discussions as $discussion)
-        <p>{{ $discussion->post_title }}</p>
-        <p>{{ $discussion->description }}</p>
-
-        <hr>
-    @empty
-
-        <p>No posts for this user</p>
-        
-    @endforelse  --}}
 </div> 
 @endsection

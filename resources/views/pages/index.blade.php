@@ -16,5 +16,7 @@
 @empty
 <p>No posts for this user</p>
 @endforelse
+
+{{ $discussions->links() }}
     
 @endsection
